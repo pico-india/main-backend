@@ -7,5 +7,7 @@ const router = express.Router()
 
 router.post('/',validation.newCategory, catchAsync(controller.new))
 router.get('/', controller.all)
+router.patch('/:id', validation.updateCategory, catchAsync(controller.update))
+router.delete('/:id', catchAsync(controller.delete))
 
 module.exports = router

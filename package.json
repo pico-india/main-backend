@@ -4,7 +4,7 @@
   "description": "Pico backend",
   "main": "app.js",
   "scripts": {
-   "dev": "nodemon ./src/app.js"
+    "dev": "nodemon ./src/app.js"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/pico-india/main-backend#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.2",
     "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.2.0",
     "morgan": "^1.10.0"
