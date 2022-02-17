@@ -5,6 +5,6 @@ const validation = require('../validations/auth.validation')
 
 const router = express.Router()
 
-router.post('/',validation.loginUser, catchAsync(controller.login))
+router.post('/', validation.loginUser, catchAsync(controller.login))
 
 module.exports = router

@@ -2,13 +2,13 @@ const Joi = require('joi')
 const ExpressError = require('../utils/ExpressError')
 
 const newCategorySchema = Joi.object({
-    name: Joi.string().required().min(5).max(255),
+    name: Joi.string().required().min(3).max(255),
     isActive: Joi.boolean(),
     isFeatured: Joi.boolean()
 })
 
 const updateCategorySchema = Joi.object({
-    name: Joi.string().min(5).max(255),
+    name: Joi.string().min(3).max(255),
     isActive: Joi.boolean(),
     isFeatured: Joi.boolean()
 })

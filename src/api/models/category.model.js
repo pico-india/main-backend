@@ -7,7 +7,7 @@ const categorySchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        minlength: 5,
+        minlength: 3,
         maxlength: 255
     },
     isActive: {
