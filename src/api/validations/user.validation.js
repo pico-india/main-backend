@@ -19,7 +19,7 @@ const registerUserSchema = Joi.object({
 const updateUserSchema = Joi.object({
     firstName: Joi.string().min(2).max(255).alphanum(),
     lastName: Joi.string().min(2).max(255).alphanum(),
-    username: Joi.string().alphanum().min(5).max(255),
+    username: Joi.string().alphanum().min(3).max(255),
     email: Joi.string().email().min(5).max(255),
     emailVerified: Joi.boolean(),
     password: Joi.string().min(5).max(1024),

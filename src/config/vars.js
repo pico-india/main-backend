@@ -14,4 +14,7 @@ module.exports = {
     jwtSecret: process.env.JWT_SECRET,
     jwtExpirationInterval: process.env.JWT_EXPIRATION_MINUTES,
     logs: process.env.NODE_ENV === 'production' ? 'combined' : 'dev',
+    cloudinaryName: process.env.CLOUDINARY_CLOUD_NAME,
+    cloudinaryKey: process.env.CLOUDINARY_KEY,
+    cloudinarySecret: process.env.CLOUDINARY_SECRET,
 };

@@ -22,7 +22,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        minlength: 5,
+        minlength: 3,
         maxlength: 255
     },
     email: {
@@ -40,12 +40,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
         minlength: 5,
-        maxlength: 1024  
+        maxlength: 1024
     },
     bio: {
         type: String,
-        minlength: 1,
-        maxlength: 255 
+        maxlength: 255
     },
     website: {
         type: String,
@@ -71,7 +70,7 @@ const userSchema = new Schema({
         type: Boolean,
         default: true
     },
-    
+
 }, { timestamps: true })
 
 userSchema.pre('save', async function (next) {
