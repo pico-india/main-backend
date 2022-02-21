@@ -4,8 +4,8 @@ const Image = require('../models/image.model')
 const ExpressError = require('../utils/ExpressError')
 
 module.exports.new = async (req, res) => {
-    const { image, category, user, tags, description, location } = req.body
-    let newImage = new Image({ image, category, user, tags, description, location })
+    const { image, category, tags, description, location } = req.body
+    let newImage = new Image({ image, category, tags, description, location, user: req.user._id })
     newImage.image = { url: req.file.path, filename: req.file.filename, size: req.file.size }
     newImage = await newImage.save()
     res.status(200).json({ data: newImage, meta: { message: "Image Posted Successfully", flag: "SUCCESS", statusCode: 200 } })

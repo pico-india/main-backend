@@ -17,11 +17,12 @@ const imageDetailSchema = Joi.object({
     description: Joi.string().max(500),
     tags: Joi.string().max(100),
     category: Joi.array().items(Joi.string().required().alphanum().min(24).max(24)),
-    user: Joi.string().required().min(24).max(24)
 })
 
 const updateImageSchema = Joi.object({
-    image: imageSchema,
+    views: Joi.number(),
+    likes: Joi.number(),
+    downloads: Joi.number(),
     isActive: Joi.boolean(),
     location: Joi.string().max(255),
     description: Joi.string().max(500),
