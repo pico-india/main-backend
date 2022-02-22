@@ -19,6 +19,13 @@ module.exports.all = async (req, res) => {
     res.status(200).json({ data: user, meta: { message: "Fetched All Users Successfully....", flag: "SUCCESS", statusCode: 200 } })
 }
 
+module.exports.profile = async (req, res) => {
+    const { username } = req.params
+    const user = await User.findOne({ username }).select('-password -role -emailVerified -__v')
+    if (!user) throw new ExpressError('No Such User Found', 404)
+    res.status(200).json({ data: user, meta: { message: "Fetched User Successfully....", flag: "SUCCESS", statusCode: 200 } })
+}
+
 module.exports.update = async (req, res) => {
     const { id } = req.params
     const user = await User.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })

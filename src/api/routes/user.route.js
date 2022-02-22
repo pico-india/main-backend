@@ -8,6 +8,7 @@ const router = express.Router()
 
 router.post('/', validation.registerUser, catchAsync(controller.register))
 router.get('/', controller.all)
+router.get('/:username', catchAsync(controller.profile))
 router.patch('/:id', auth, validation.updateUser, catchAsync(controller.update))
 router.delete('/:id', auth, catchAsync(controller.delete))
 
