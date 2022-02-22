@@ -4,15 +4,16 @@ const Image = require('../models/image.model')
 const ExpressError = require('../utils/ExpressError')
 
 module.exports.new = async (req, res) => {
-    const { image, category, tags, description, location } = req.body
-    let newImage = new Image({ image, category, tags, description, location, user: req.user._id })
+    let newImage = new Image({ ...req.body, user: req.user._id })
     newImage.image = { url: req.file.path, filename: req.file.filename, size: req.file.size }
     newImage = await newImage.save()
     res.status(200).json({ data: newImage, meta: { message: "Image Posted Successfully", flag: "SUCCESS", statusCode: 200 } })
 }
 
 module.exports.all = async (req, res) => {
-    const image = await Image.find({}).select('-createdAt -updatedAt -__v')
+    const image = await Image.find({ isActive: true }).populate({
+        path: 'user', select: '-password -isActive -role -emailVerified -__v'
+    }).populate({ path: 'category', match: { isActive: true }, select: '-createdAt -updatedAt -__v' }).select(' -createdAt -updatedAt -__v')
     res.status(200).json({ data: image, meta: { message: "Fetched All Images Successfully....", flag: "SUCCESS", statusCode: 200 } })
 }
 

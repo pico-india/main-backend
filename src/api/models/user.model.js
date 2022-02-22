@@ -90,7 +90,7 @@ userSchema.statics.findAndValidate = async function (email, password) {
 }
 
 userSchema.methods.generateAuthToken = async function () {
-    const token = await jwt.sign({ _id: this._id, role: this.role, username: this.username }, jwtSecret, { expiresIn: jwtExpirationInterval })
+    const token = await jwt.sign({ _id: this._id, role: this.role, username: this.username }, jwtSecret) //, { expiresIn: jwtExpirationInterval }
     return token
 }
 
