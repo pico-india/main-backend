@@ -32,7 +32,13 @@ module.exports.update = async (req, res) => {
     const { id } = req.params
     const user = await User.findByIdAndUpdate(id, req.body, { new: true, runValidators: true })
     if (!user) throw new ExpressError("No such user found...", 400)
-    res.status(200).json({ data: user, meta: { message: "User Updated Successfully...", flag: "SUCCESS", statusCode: 200 } })
+    if (req.body.isActive === false) {
+        const image = await Image.updateMany({ user: user._id }, { isActive: false })
+    }
+    if (req.body.isActive === true) {
+        const image = await Image.updateMany({ user: user._id }, { isActive: true })
+    }
+    res.status(200).json({ data: { user }, meta: { message: "User Updated Successfully...", flag: "SUCCESS", statusCode: 200 } })
 }
 
 module.exports.delete = async (req, res) => {

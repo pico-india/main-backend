@@ -16,10 +16,16 @@ module.exports.auth = (req, res, next) => {
     }
 }
 
-module.exports.isAuthorOrAdmin = async (req, res, next) => {
+module.exports.isAuthorOrAdminImage = async (req, res, next) => {
     const { id } = req.params
     const image = await Image.findById(id)
     if (!image) throw new ExpressError("Image Doesn't Exists...", 400)
     if (image.user.equals(req.user._id) || req.user.role === 'admin') next()
+    else throw new ExpressError('Access Denied', 401)
+}
+
+module.exports.isAuthorOrAdminUser = (req, res, next) => {
+    const { id } = req.params
+    if (id === req.user._id || req.user.role === 'admin') next()
     else throw new ExpressError('Access Denied', 401)
 }
