@@ -1,6 +1,8 @@
 const User = require('../models/user.model')
 const _ = require('lodash')
 const ExpressError = require('../utils/ExpressError')
+const Image = require('../models/image.model')
+const { cloudinary } = require('../../config/cloudinary')
 
 module.exports.register = async (req, res) => {
     const { firstName, lastName, username, email, password, role } = req.body
@@ -37,5 +39,14 @@ module.exports.delete = async (req, res) => {
     const { id } = req.params
     const user = await User.findByIdAndDelete(id)
     if (!user) throw new ExpressError("No such user found", 400)
-    res.status(200).json({ data: user, meta: { message: "User Deleted Successfully...", flag: "SUCCESS", statusCode: 200 } })
+    let image = await Image.find({ user: user._id })
+    const deletedImages = await Image.deleteMany({ user: user._id })
+    image = image.map(i => (i.image.filename))
+    cloudinary.api.delete_resources(
+        image,
+        function (error, result) {
+            console.log(result, error)
+        }
+    );
+    res.status(200).json({ data: { user, deletedImages }, meta: { message: "User Deleted Successfully...", flag: "SUCCESS", statusCode: 200 } })
 }

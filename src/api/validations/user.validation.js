@@ -4,7 +4,7 @@ const ExpressError = require('../utils/ExpressError')
 const registerUserSchema = Joi.object({
     firstName: Joi.string().required().min(2).max(255).alphanum(),
     lastName: Joi.string().required().min(2).max(255).alphanum(),
-    username: Joi.string().required().alphanum().min(5).max(255),
+    username: Joi.string().required().alphanum().min(3).max(255),
     email: Joi.string().required().email().min(5).max(255),
     emailVerified: Joi.boolean(),
     password: Joi.string().required().min(5).max(1024),
