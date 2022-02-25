@@ -17,4 +17,8 @@ module.exports = {
     cloudinaryName: process.env.CLOUDINARY_CLOUD_NAME,
     cloudinaryKey: process.env.CLOUDINARY_KEY,
     cloudinarySecret: process.env.CLOUDINARY_SECRET,
+    emailService: process.env.EMAIL_SERVICE,
+    emailUsername: process.env.EMAIL_USERNAME,
+    emailPassword: process.env.EMAIL_PASSWORD,
+    emailFrom: process.env.EMAIL_FROM
 };

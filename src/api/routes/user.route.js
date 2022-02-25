@@ -9,6 +9,7 @@ const router = express.Router()
 router.post('/', validation.registerUser, catchAsync(controller.register))
 router.get('/', controller.all)
 router.get('/:username', catchAsync(controller.profile))
+router.get('/:id/confirmation_token/:confirmationToken', catchAsync(controller.verifyEmail))
 router.patch('/:id', auth, isAuthorOrAdminUser, validation.updateUser, catchAsync(controller.update))
 router.delete('/:id', auth, isAuthorOrAdminUser, catchAsync(controller.delete))
 
