@@ -11,7 +11,10 @@ const sendEmail = (options) => {
     })
 
     const mailOptions = {
-        from: emailFrom,
+        from: {
+            name: 'Pico Team',
+            address: emailFrom
+        },
         to: options.to,
         subject: options.subject,
         html: options.text
