@@ -20,10 +20,15 @@ const tokenSchema = new Schema({
     },
     expires: {
         type: Date
+    },
+    createAt: {
+        type: Date,
+        default: Date.now(),
+        expires: '1440m'
     }
-}, { timestamps: true })
+})
 
-tokenSchema.index({ createdAt: 1 }, { expireAfterSeconds: 3600 * 12 })
+//tokenSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 })
 
 tokenSchema.statics.generateToken = async function (user, usage) {
     const randomToken = crypto.randomBytes(20).toString('hex')

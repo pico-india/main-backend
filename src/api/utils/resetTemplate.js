@@ -1,5 +1,5 @@
-module.exports.template = (firstname, url) => (
-  `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+module.exports.resetTemplate = (firstname, url) => (
+    `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html data-editor-version="2" class="sg-campaigns" xmlns="http://www.w3.org/1999/xhtml">
         <head>
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -140,7 +140,7 @@ module.exports.template = (firstname, url) => (
                                             <td role="modules-container" style="padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor="#FFFFFF" width="100%" align="left"><table class="module preheader preheader-hide" role="module" data-type="preheader" border="0" cellpadding="0" cellspacing="0" width="100%" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;">
         <tr>
           <td role="module-content">
-            <p>Email Verification</p>
+            <p>Password Reset</p>
           </td>
         </tr>
       </table><table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" data-type="columns" style="padding:30px 20px 30px 20px;" bgcolor="#f6f6f6" data-distribution="1">
@@ -167,13 +167,13 @@ module.exports.template = (firstname, url) => (
       </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="948e3f3f-5214-4721-a90e-625a47b1c957" data-mc-module-version="2019-10-22">
         <tbody>
           <tr>
-            <td style="padding:40px 30px 18px 30px; line-height:36px; text-align:inherit; background-color:#ffffff;" height="100%" valign="top" bgcolor="#ffffff" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="font-size: 43px">Thanks for signing up, ${firstname}!</span></div><div></div></div></td>
+            <td style="padding:40px 30px 18px 30px; line-height:36px; text-align:inherit; background-color:#ffffff;" height="100%" valign="top" bgcolor="#ffffff" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="font-size: 43px">Here is your password reset link, ${firstname}!</span></div><div></div></div></td>
           </tr>
         </tbody>
       </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="a10dcb57-ad22-4f4d-b765-1d427dfddb4e" data-mc-module-version="2019-10-22">
         <tbody>
           <tr>
-            <td style="padding:18px 30px 18px 30px; line-height:22px; text-align:inherit; background-color:#ffffff;" height="100%" valign="top" bgcolor="#ffffff" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="font-size: 18px">Please verify your email address to</span><span style="color: #000000; font-size: 18px; font-family: arial, helvetica, sans-serif"> get access to all the Pico features</span><span style="font-size: 18px">.</span></div>
+            <td style="padding:18px 30px 18px 30px; line-height:22px; text-align:inherit; background-color:#ffffff;" height="100%" valign="top" bgcolor="#ffffff" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="font-size: 18px">You requested a link to reset your password for Pico.</span><span style="color: #000000; font-size: 18px; font-family: arial, helvetica, sans-serif"> Use the link below to login and set a new password.</span><span style="font-size: 18px">.</span></div>
     <div style="font-family: inherit; text-align: center"><span style="color: #ffbe00; font-size: 18px"><strong>Thank you!</strong></span></div><div></div></div></td>
           </tr>
         </tbody>
@@ -192,7 +192,7 @@ module.exports.template = (firstname, url) => (
                   <tbody>
                     <tr>
                     <td align="center" bgcolor="#ffbe00" class="inner-td" style="border-radius:6px; font-size:16px; text-align:center; background-color:inherit;">
-                      <a href="${url}" style="background-color:#ffbe00; border:1px solid #ffbe00; border-color:#ffbe00; border-radius:0px; border-width:1px; color:#000000; display:inline-block; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 40px 12px 40px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">Verify Email Now</a>
+                      <a href="${url}" style="background-color:#ffbe00; border:1px solid #ffbe00; border-color:#ffbe00; border-radius:0px; border-width:1px; color:#000000; display:inline-block; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 40px 12px 40px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;" target="_blank">Reset Password Now</a>
                     </td>
                     </tr>
                   </tbody>
@@ -212,11 +212,11 @@ module.exports.template = (firstname, url) => (
           <tr>
             <td style="padding:50px 30px 50px 30px; line-height:22px; text-align:inherit; background-color:#6e6e6e;" height="100%" valign="top" bgcolor="#6e6e6e" role="module-content"><div><div style="font-family: inherit; text-align: center"><span style="color: #ffffff; font-size: 18px"><strong>Note</strong></span></div>
     <div style="font-family: inherit; text-align: center"><br></div>
-    <div style="font-family: inherit; text-align: center"><span style="color: #ffffff; font-size: 18px">1. This email verification link will expire in 1 day.</span></div>
+    <div style="font-family: inherit; text-align: center"><span style="color: #ffffff; font-size: 18px">1. Your password won't change until you access the link above and create a new one.</span></div>
     <div style="font-family: inherit; text-align: center"><br></div>
-    <div style="font-family: inherit; text-align: center"><span style="color: #ffffff; font-size: 18px">2. You can always have a link resend to you to confirm your email address.</span></div>
+    <div style="font-family: inherit; text-align: center"><span style="color: #ffffff; font-size: 18px">2. This password reset link will expire in 1 day. You can always have a link resend to you to reset your password.</span></div>
     <div style="font-family: inherit; text-align: center"><br></div>
-    <div style="font-family: inherit; text-align: center"><span style="color: #ffffff; font-size: 18px">3. If you did not sign-up for this account, you can ignore this email.</span></div>
+    <div style="font-family: inherit; text-align: center"><span style="color: #ffffff; font-size: 18px">3. If you didn't request this, please ignore this email.</span></div>
     <div style="font-family: inherit; text-align: center"><br></div>
     <div style="font-family: inherit; text-align: center"><br></div>
     <div style="font-family: inherit; text-align: center"><span style="color: #ffbe00; font-family: Colfax, Helvetica, Arial, sans-serif; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 700; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(110, 110, 110); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline">Need Support?</span> <span style="color: #ffffff; font-size: 18px">&nbsp;Our support team is always</span></div>

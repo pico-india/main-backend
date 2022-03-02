@@ -6,6 +6,7 @@ const { cloudinary } = require('../../config/cloudinary')
 const Token = require('../models/token.model')
 const sendEmail = require('../utils/sendMail')
 const { template } = require('../utils/verficationTemplate')
+const { resetTemplate } = require('../utils/resetTemplate')
 const crypto = require('crypto')
 
 module.exports.register = async (req, res) => {
@@ -66,13 +67,11 @@ module.exports.forgotPassword = async (req, res) => {
     if (!user) throw new ExpressError('This email is not registered', 400)
     const token = await Token.generateToken(user._id, 'password-reset')
     const url = `http://localhost:8080/api/user/resetPassword/${token}`
-    const text =
-        `<h1>You have requested for password reset</h1>
-    <p>pls go to this link to reset your password</p>
-    <a href=${url} clicktracking=off>Reset Password</a>`
+    const text = resetTemplate(user.firstName, url)
     //await sendEmail({ to: user.email, subject: 'Reset Pico Password', text })
-    res.status(200).json({ data: url, meta: { message: "Reset password mail sent!", flag: "SUCCESS", statusCode: 200 } })
+    res.status(200).json({ data: { url, token }, meta: { message: "Reset password mail sent!", flag: "SUCCESS", statusCode: 200 } })
 }
+
 module.exports.resetPassword = async (req, res) => {
     const { resetToken } = req.params
     const { password } = req.body
