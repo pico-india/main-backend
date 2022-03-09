@@ -47,10 +47,12 @@ const imageDetailSchema = new Schema({
         type: String,
         maxlength: 500
     },
-    tags: {
-        type: String,
-        maxlenght: 100
-    },
+    tags: [
+        {
+            type: String,
+            maxlenght: 100
+        }
+    ],
     category: [
         {
             type: Schema.Types.ObjectId,

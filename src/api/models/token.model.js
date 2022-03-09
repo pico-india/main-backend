@@ -19,21 +19,16 @@ const tokenSchema = new Schema({
         enum: ['email-verify', 'password-reset'],
     },
     expires: {
-        type: Date
-    },
-    createAt: {
         type: Date,
-        default: Date.now(),
-        expires: '1440m'
+        default: Date.now() + 24 * 60 * (60 * 1000),
+        expires: 60
     }
 })
-
-//tokenSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 })
 
 tokenSchema.statics.generateToken = async function (user, usage) {
     const randomToken = crypto.randomBytes(20).toString('hex')
     const encryptedToken = crypto.createHash('sha256').update(randomToken).digest('hex')
-    let token = new Token({ user, token: encryptedToken, expires: Date.now() + 24 * 60 * (60 * 1000), usage })
+    let token = new Token({ user, token: encryptedToken, usage })
     token = await token.save()
     return randomToken
 }
