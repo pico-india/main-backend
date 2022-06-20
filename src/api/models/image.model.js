@@ -1,4 +1,3 @@
-const { array } = require('joi')
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
@@ -47,12 +46,10 @@ const imageDetailSchema = new Schema({
         type: String,
         maxlength: 500
     },
-    tags: [
-        {
-            type: String,
-            maxlenght: 100
-        }
-    ],
+    tags: {
+        type: String,
+        maxlenght: 100
+    },
     category: [
         {
             type: Schema.Types.ObjectId,

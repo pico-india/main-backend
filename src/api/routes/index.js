@@ -13,15 +13,13 @@ router.get('/status', (req, res) => {
 
 router.get('/search', async (req, res) => {
     const { photos } = req.query
-    const keys = ['tags', 'description', 'category.name', 'user.username']
-    const search = new RegExp(photos, 'i')
     const result = await Image.find({
-        // $or: [{ search },
-        // {
-        //     tags
-        // }]
-    })
-    res.status(200).json({ data: {}, meta: { message: "Here are your search results", flag: "SUCCESS", statusCode: 200 } })
+        $or: [
+            { tags: { $regex: photos, $options: 'i' } },
+            //{ category: { $eleMatch: { name: { $regex: photos, $options: 'i' } } } }
+        ]
+    }).populate({ path: 'category' })
+    res.status(200).json({ data: result, meta: { message: "Here are your search results", flag: "SUCCESS", statusCode: 200 } })
 })
 
 router.use('/category', categoryRoute)
